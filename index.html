@@ -16,7 +16,9 @@
 
 <!-- HEADER BEGINS -->
     <header>
-        <h1>Gollum Ring Slalom</h1>
+        <div class='topWrapper'>
+            <h1>Gollum Ring Slalom</h1>
+        </div>
     </header>
 <!-- HEADER ENDS     -->
 
@@ -32,20 +34,29 @@
             <img src="assets/gollumgif.gif"> -->
         </section>
         <!-- INTRO TO GAME SECTION ENDS -->
-        
+            <h3>How to play</h3>
+            <p></p>
         <!-- THE COUNT SECTION BEGINS -->
         <section>
-
-
+            <div class="mainWrapper">
+                <div class="gollumWrapper">
+                    <img src="assets/gollumgif.gif">
+                </div>
+                <div class="countWrapper">
+                    <h2 id="shownCount">21</h2>
+                    <p>RINGS REMAINING</p>
+                </div>
+            </div>
 
         </section>
         <!-- THE COUNT SECTION ENDS -->
         
         <section>
-            <button>ONE</button>
-            <button>TWO</button>
-            <button>THREE</button>
-
+            <div class="buttonWrapper">
+                <button onclick="gameCount.decreaseOne();">ONE</button>
+                <button onclick="gameCount.decreaseTwo();">TWO</button>
+                <button onclick="gameCount.decreaseThree();">THREE</button>
+            </div>
 
         </section>
 
