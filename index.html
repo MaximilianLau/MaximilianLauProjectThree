@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css?family=Alegreya+SC:400,900|Open+Sans&display=swap" rel="stylesheet">
-    <title>Gollum Ring Slalom</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+SC:400,900|Alegreya+Sans&display=swap" rel="stylesheet">
+    <title>Gollum Souls</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="counting.js"></script>
 </head>
@@ -16,46 +16,97 @@
 
 <!-- HEADER BEGINS -->
     <header>
-        <div class='topWrapper'>
-            <h1>Gollum Ring Slalom</h1>
+        <div class='wrapper'>
+            <div class='topWrapper'>
+                <h1 style="visibility:hidden">Gollum Souls</h1>
+            </div>
         </div>
     </header>
 <!-- HEADER ENDS     -->
 
 <!-- MAIN SECTION BEGINS -->
     <main>
-
         <!-- INTRO TO GAME SECTION BEGINS -->
         <section>
-            <!-- <p> There are 21 rings in the barrel</p>
-            <p> There is a magical incantation that makes it so the last ring that is taken out is the "One Ring"</p>
-            <p> You must take turns taking either 1 , 2 , 3 rings out of the barrel</p>
-            <p> Think carefully so you may beat Gollum and take the "One True Ring"!</p>
-            <img src="assets/gollumgif.gif"> -->
+            <div class="wrapper">
+                <div class="parallaxWrapper">
+                    <div class="parallaxLayer bg1"></div>
+                    <div class="parallaxLayer bg2"></div>
+                    <div class="parallaxLayer bg3"></div>
+                    <div class="parallaxLayer bg4"></div>
+                    <div class="parallaxLayer bg5"></div>
+                    <div class="parallaxLayer bg6"></div>
+                    <div class="parallaxLayer logo"></div>
+                </div>
+            </div>
         </section>
-        <!-- INTRO TO GAME SECTION ENDS -->
-            <h3>How to play</h3>
-            <p></p>
-        <!-- THE COUNT SECTION BEGINS -->
+        <!-- Unity SECTION BEGINS -->
         <section>
+            <div class="unityWrapper">
+                <img src="assets/unity.png">
+            </div>
+        </section>
+        <!-- Unity SECTION ENDS -->
+
+        <!-- INTRO TO GAME SECTION ENDS -->
+        <section class="wrapper">
+            <div class="introWrapper">
+                <h3>Sneaky Sneaky Hobbitses?</h3>
+                <div class="introColumn">
+                    <p>You were in your room reading "Lord of the Rings" again. Trapped inside because of the coronavirus. How many times have you read it these past weeks? Three? Four? You slowly drift off to sleep. <br> <br>
+                    Hmm. It sure is cold. You awake. Where am I? <br><br>
+                    Someone grabs you up and hoists you over towards the only source of light in the area. <br> <br>
+                    Wait? Is that Gollum?!?
+                    </p>
+                    <p>
+                    <span>"I've been waiting... This game can't start with only one person."</span> <br><br>
+                    Gollum explains that to escape this place, you must be able to get the "One Ring" from the barrel. <br><br>
+                    The barrel is enchanted so that you may only take one, two, or three rings from the barrel and that the "One Ring" will be the last one taken. <br><br>
+                    There can only be one winner.. Let the game begin!
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- THE COUNT SECTION BEGINS -->
+        <section class="wrapper">
             <div class="mainWrapper">
                 <div class="gollumWrapper">
-                    <img src="assets/gollumgif.gif">
+                    <div class='pixelart-to-css2'>
+                    </div>
+                    <div class='pixelart-to-css3'>
+                    </div>
+                    <div class='pixelart-to-css4'>
+                    </div>
+                    <div class="pixelart-to-css">                        
+                    </div>
                 </div>
                 <div class="countWrapper">
-                    <h2 id="shownCount">21</h2>
+                    <h2 id="shownCount">?</h2>
                     <p>RINGS REMAINING</p>
                 </div>
             </div>
 
         </section>
-        <!-- THE COUNT SECTION ENDS -->
-        
+
+    <!-- THE COUNT SECTION ENDS -->
+        <section class="wrapper">
+            <div class="logWrapper">
+                <p id='turnChange'>-----</p>
+                <p id='countChange'>-----</p>
+            </div>
+        </section>        
         <section>
-            <div class="buttonWrapper">
-                <button onclick="gameCount.decreaseOne();">ONE</button>
-                <button onclick="gameCount.decreaseTwo();">TWO</button>
-                <button onclick="gameCount.decreaseThree();">THREE</button>
+            <div class="wrapper buttonWrapper">
+                <button class="startToggle" onclick="startGameToggle();">Start Game</button>
+                <button class="startToggleOff" onclick="startGameEasy();">Easy Mode</button>
+                <button class="startToggleOff" onclick="startGameMaster();">Master Mode</button>
+                <button class="restartGame" onclick="restartGame();">Play Again?</button>
+                <button class="playerDecrease" onclick="playerDecrease(1);">ONE</button>
+                <button class="playerDecrease" onclick="playerDecrease(2);">TWO</button>
+                <button class="playerDecrease" onclick="playerDecrease(3);">THREE</button>
+                <button class="playerDecreaseM" onclick="playerDecreaseM(1);">ONE</button>
+                <button class="playerDecreaseM" onclick="playerDecreaseM(2);">TWO</button>
+                <button class="playerDecreaseM" onclick="playerDecreaseM(3);">THREE</button>
             </div>
 
         </section>
@@ -74,50 +125,12 @@
 
 <!-- FOOTER SECTION BEGINS -->
     <footer>
-
+        <div class="wrapper footWrapper">
+            <p>&copy; 2020:DESIGNED, ILLUSTRATED AND CODED BY <a href="http://maximilianlau.com">MAXIMILIAN LAU</a>.</p>
+        </div>
 
     </footer>
 <!-- FOOTER SECTION ENDS -->
 
 </body>
 </html>
-
-
-
-
-<!-- LOSING SCREEN -->
-<!-- Sneaky Sneaky hobbitsssss -->
-
-
-
-
-
-<!-- 1.1 A Simple Take-Away Game. Here are the rules of a very simple impartial
-combinatorial game of removing chips from a pile of chips.
-(1) There are two players. We label them I and II.
-(2) There is a pile of 21 chips in the center of a table.
-(3) A move consists of removing one, two, or three chips from the pile. At least one
-chip must be removed, but no more than three may be removed.
-(4) Players alternate moves with Player I starting.
-(5) The player that removes the last chip wins. (The last player to move wins. If you
-can’t move, you lose.)
-How can we analyze this game? Can one of the players force a win in this game?
-Which player would you rather be, the player who starts or the player who goes second?
-What is a good strategy?
-We analyze this game from the end back to the beginning. This method is sometimes
-called backward induction.
-I–3
-If there are just one, two, or three chips left, the player who moves next wins
-simply by taking all the chips.
-Suppose there are four chips left. Then the player who moves next must
-leave either one, two or three chips in the pile and his opponent will be able to
-win. So four chips left is a loss for the next player to move and a win for the
-previous player, i.e. the one who just moved.
-With 5, 6, or 7 chips left, the player who moves next can win by moving to
-the position with four chips left.
-With 8 chips left, the next player to move must leave 5, 6, or 7 chips, and so
-the previous player can win.
-We see that positions with 0, 4, 8, 12, 16,... chips are target positions; we
-would like to move into them. We may now analyze the game with 21 chips.
-Since 21 is not divisible by 4, the first player to move can win. The unique
-optimal move is to take one chip and leave 20 chips which is a target position. -->

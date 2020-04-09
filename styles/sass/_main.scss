@@ -1,0 +1,105 @@
+
+/* INTRO SECTION */
+
+.introWrapper {
+    width:60%;
+    text-align:center;
+    margin: 0 auto;
+    padding: 10px 0;
+    color:rgba(173, 133, 77, 1)
+}
+
+.introWrapper h3 {
+    font-size:3.0rem;
+    color:white;
+    font-family:'Alegreya SC', serif;
+    margin: 50px 0;
+}
+.introWrapper p {
+    font-size:1.8rem;
+    font-family: 'Alegreya Sans', sans-serif;
+    line-height:25px;
+}
+.introWrapper p:hover {
+    color:rgb(167, 75, 0);
+}
+.introColumn {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    text-align:left;
+    grid-gap: 100px;
+}
+.introColumn span {
+    font-size:2.2rem;
+    font-weight:700;
+}
+
+
+/* MAIN SECTION  */
+.mainWrapper p {
+    font-size:7.0rem;
+    color:rgba(173, 133, 77, 1)
+}
+
+.mainWrapper {
+    text-align:center;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    width:60%;
+    margin:0 auto;
+    padding:250px 0 50px 0;
+}
+
+.countWrapper {
+    margin: auto 0;
+}
+.countWrapper h2:hover {
+    color:white;
+}
+.countWrapper p {
+    font-family:'Alegreya SC', serif;
+    margin-top:30px;
+}
+.gollumWrapper {
+    transform:scale(2);
+    margin-left:30%;
+}
+
+/* TEXT Change in COUNT SECTION */
+.logWrapper {
+    margin:0 auto;
+    text-align:center;
+    color:white;
+    font-family:'Alegreya SC', serif;
+    font-size:2.0rem;
+}
+
+
+/* Button SECTION */
+.buttonWrapper {
+    text-align:center;
+    padding: 50px 0 100px 0;
+}
+.startToggleOff {
+    display:none;
+}
+.restartGame {
+    display:none;
+}
+.playerDecrease {
+    display:none;
+}
+.playerDecreaseM {
+    display:none;
+}
+
+.buttonWrapper button {
+    background-color:#121212;
+    border: 2px solid white;
+    color: rgba(225, 175, 100, 1);
+    font-family:'Alegreya SC', serif;
+    border-radius:5%;
+}
+.buttonWrapper button:hover {
+    color:rgb(167, 75, 0);
+}

@@ -1,190 +1,258 @@
+let playerTurn = false;
+let startNumber;
+// Adding Visibility instead of Toggle for certain elements 
+$.fn.invisible = function () {
+    return this.each(function () {
+        $(this).css("visibility", "hidden");
+    });
+};
+$.fn.visible = function () {
+    return this.each(function () {
+        $(this).css("visibility", "visible");
+    });
+};
+
+// Adding parallax Mouse scroll 
+$(window).scroll(function () {
+    const parallaxScroll = $(this).scrollTop();
+
+    $('.bg1').css({
+        'transform': 'translate(0,' + parallaxScroll / 5 + '%)'
+    })
+    $('.bg2').css({
+        'transform': 'translate(0,' + parallaxScroll / 10 + '%)'
+    })
+    $('.bg3').css({
+        'transform': 'translate(0,' + parallaxScroll / 15 + '%)'
+    })
+    $('.bg4').css({
+        'transform': 'translate(0,' + parallaxScroll / 20 + '%)'
+    })
+    $('.bg5').css({
+        'transform': 'translate(0,' + parallaxScroll / 200 + '%)'
+    })
+    $('.logo').css({
+        'transform': 'translate(0,' + parallaxScroll / 20 + '%)'
+    })
+})
 
 
-// Variables 
-// ORIGINAL COUNTDOWN NUMBER = 21
-// COUNTDOWN COUNTER
-// PLAYER OR AI TURN 
-// CAN CHOOSE 1, 2, 3 (BUTTONS IN HTML)
-
-    // SHOULD BE BROKEN DOWN 1 INTO -1      2 INTO -1 ,  -1       3 INTO -1, -1, -1       FOR EASIER 21* GOAL HIT
-//              OR JUST         -1                  -2                  -3
-//
-
-// MVP GOALS
-// CREATE BASIC GAME
-// ABILITY TO CHOOSE EASY/BLIND MODE
-// RESTART BUTTON
-// ABILITY TO PLAY MASTER MODE COMPUTER
-
-
-// STRETCH GOALS
-// CSS: PICTURE OF GOLLUM : with bounce/etc animation
-// ABILITY TO CHOOSE STARTING POINT AND MAYBE SLIGHT CHANGE IN CHOICE IN TAKING ie(1,2,3,4,5) (HAVE TO BE ABLE TO CHOOSE STARTING PLAYER/AI TOO: ALOT MORE ALGORITHMIC )
-// ADD TIMER/ TIME LIMIT
-// ABILITY TO ADD MORE BARRELS OF RINGS   
-
-// ESTHER
-
-let startNumber = 21;
-
-let playerTurn= false;
-
-let number = startNumber;
-
-
-// PLAYER TURN
-console.log("The current count is " + startNumber + ".");
-const gameCount = {
-    currentNumber: startNumber,
-    decreaseThree: function() {
-            this.currentNumber = this.currentNumber - 3
-            document.getElementById("shownCount").innerHTML = this.currentNumber
-            if (this.currentNumber <=  0) {
-                console.log("You win")
-                alert("You now possess the 'One Ring'")
-            } else {
-                console.log("The count is now " + this.currentNumber + ".")
-                console.log("I see. Gollum's Turn.");
-                playerTurn= false;
-            }
-        },
-        // decreaseThree: function() {
-        //     this.currentNumber = this.currentNumber - 1
-        //     if (this.currentNumber === 0) {
-        //         console.log("You win")
-        //         alert("You now possess the 'One Ring'")
-        //     } else {
-        //         this.currentNumber = this.currentNumber -1 
-        //         if (this.currentNumber === 0) {
-        //             console.log("You win")
-        //             alert("You now possess the 'One Ring'")
-        //         } else {
-        //             this.currentNumber = this.currentNumber - 1 
-        //             if (this.currentNumber === 0) {
-        //                 console.log("You win")
-        //                 alert("You now possess the 'One Ring'")
-        //             } else {
-        //                 console.log("The count is now " + this.currentNumber + ".")
-        //                 playerTurn = false;
-        //              }
-        //         }
-        //     }
-        // },
-
-    decreaseTwo: function () {
-        this.currentNumber = this.currentNumber - 2
-        document.getElementById("shownCount").innerHTML = this.currentNumber
-        if (this.currentNumber <= 0) {
-            console.log("You win")
-            alert("You now possess the 'One Ring'")
-        } else {
-            console.log("The count is now " + this.currentNumber + ".")
-            console.log("I see. Gollum's Turn.");
-            playerTurn = false;
-        }
-    },
-        // decreaseTwo: function() {
-        //     this.currentNumber = this.currentNumber - 1
-        //     if (this.currentNumber === 0) {
-        //         console.log("You win")
-        //         alert("You now possess the 'One Ring'")
-        //     } else {
-        //         this.currentNumber = this.currentNumber - 1
-        //         if (this.currentNumber=== 0) {
-        //             console.log("You win")
-        //             alert("You now possess the 'One Ring'")
-        //         } else {
-        //             console.log("The count is now " + this.currentNumber + ".")
-        //             playerTurn = false;
-        //         }
-        //     }
-        // },
-    decreaseOne: function() {
-        this.currentNumber = this.currentNumber - 1 
-        document.getElementById("shownCount").innerHTML = this.currentNumber
-        if (this.currentNumber <= 0) {
-            console.log("You win")
-            alert("You now possess the 'One Ring'")
-        } else {
-            console.log("The count is now " + this.currentNumber + ".")
-            console.log("I see. Gollum's Turn.");
-            playerTurn = false;
-        }
-    }
-
+function startGameToggle() {
+    $('button.startToggle').toggle();
+    $('button.startToggleOff').toggle();
 }
-/// AI TURN :EZ 
 
-// if playerTurn:false?;
-const easyAI = {
-    turn: function () {
+function restartGame() {
+    $('button.startToggle').toggle();
+    $('button.restartGame').toggle();
+    $('.pixelart-to-css3').hide();
+    $('.pixelart-to-css4').hide();
+    $('.pixelart-to-css2').visible();
+}
+
+
+// EASY AI
+function startGameEasy() {
+    $('button.startToggleOff').toggle();
+    $('button.playerDecrease').toggle();
+    startNumber = prompt('How many rings are in the barrel?'); 
+    startNumber= parseFloat(startNumber)
+    if (startNumber % 1 != 0 ){
+        alert('Sneaky little hobbitses.');
+        $('button.startToggle').toggle();
+        $('button.playerDecrease').toggle();
+    } else {
+    $('#shownCount').html(startNumber)
+    playerTurn = false;
+    easyAI();
+    return startNumber;
+    } 
+}
+
+// decides EASY AI MOVE 
+function easyAI() {
+    if (playerTurn === false) {
+    setTimeout(function () {
         let randomNumber = (Math.floor(Math.random() * 3) + 1)
-        gameCount.currentNumber = gameCount.currentNumber - randomNumber;
-        document.getElementById("shownCount").innerHTML = gameCount.currentNumber
-        if (gameCount.currentNumber === 0) {
-            console.log('Gollum has taken the last ring!')
-            alert('Gollum has taken the "One Ring" You lose!')
-        } else {
-            console.log("The count is now " + gameCount.currentNumber + ".")
-            console.log("Gollum has made his move, it is now your turn.");
-            playerTurn = true;
-        }
-    }
-}
-
-
-/// AI TURN : MASTER
-const masterAI = {
-    // nimCount: gameCount.currentNumber,
-    master: "master",
-    turn: function () {
-        if (gameCount.currentNumber % 4 === 1 ) {
-            gameCount.currentNumber = gameCount.currentNumber - 1
-            document.getElementById("shownCount").innerHTML = gameCount.currentNumber
-            if (gameCount.currentNumber === 0) {
-                console.log('Gollum has taken the last ring!')
-            alert('Gollum has taken the "One Ring" You lose!')
-            } else {
-                console.log("The count is now " + gameCount.currentNumber + ".")
-                console.log("Gollum has made his move, it is now your turn.");
-                playerTurn = true;
-            }
-        } else if (gameCount.currentNumber % 4 === 2) {
-                gameCount.currentNumber = gameCount.currentNumber - 2
-                document.getElementById("shownCount").innerHTML = gameCount.currentNumber
-                if (gameCount.currentNumber === 0) {
-                    console.log('Gollum has taken the last ring!')
-                    alert('Gollum has taken the "One Ring" You lose!')
+        startNumber = startNumber - randomNumber;
+        $('#shownCount').html(startNumber)
+            if (randomNumber === 1) {
+                if (startNumber <= 0) {
+                    $('#turnChange').html('Gollum has taken the last ring!')
+                    $('#countChange').html('You lose!')
+                    $('.pixelart-to-css3').show();
+                    $('.pixelart-to-css4').show();
+                    $('.pixelart-to-css2').invisible();
+                    $('button.playerDecrease').toggle();
+                    $('button.restartGame').toggle();
+                    $('#shownCount').html(0);
                 } else {
-                console.log("The count is now " + gameCount.currentNumber + ".")
-                console.log("Gollum has made his move, it is now your turn.");
-                playerTurn = true;
-                }   
-        } else if (gameCount.currentNumber % 4 === 3) {
-                gameCount.currentNumber = gameCount.currentNumber - 3
-                document.getElementById("shownCount").innerHTML = gameCount.currentNumber
-                if (gameCount.currentNumber === 0) {
-                    console.log('Gollum has taken the last ring!')
-                    alert('Gollum has taken the "One Ring" You lose!')
+                    $('#turnChange').html('Gollum has made his move, he has taken ' + randomNumber + ' ring.')
+                    $('#countChange').html('There are ' + startNumber + ' remaining.')
+                    playerTurn = true;
+                }    
+            } else if (randomNumber >=1) {
+                if (startNumber <= 0) {
+                    $('#turnChange').html('Gollum has taken the last ring!')
+                    $('#countChange').html('You lose!')
+                    $('.pixelart-to-css3').show();
+                    $('.pixelart-to-css4').show();
+                    $('.pixelart-to-css2').invisible();
+                    $('button.playerDecrease').toggle();
+                    $('button.restartGame').toggle();
+                    $('#shownCount').html(0);
                 } else {
-                    console.log("The count is now " + gameCount.currentNumber + ".")
-                    console.log("Gollum has made his move, it is now your turn.");
+                    $('#turnChange').html('Gollum has made his move, he has taken ' + randomNumber + ' rings.')
+                    $('#countChange').html('There are ' + startNumber + ' remaining.')
                     playerTurn = true;
                 }
-        } else if (gameCount.currentNumber % 4 === 0    ) {
-            gameCount.currentNumber = gameCount.currentNumber - 4
-            document.getElementById("shownCount").innerHTML = gameCount.currentNumber
-            if (gameCount.currentNumber === 0) {
-                console.log('Gollum has taken the last ring!')
-                alert('Gollum has taken the "One Ring" You lose!')
+            }
+        }, 1500);
+    }
+}
+function playerDecrease(x) {
+    if (playerTurn === true && startNumber >= 1) {
+    startNumber = startNumber - x 
+    $('#shownCount').html(startNumber);
+        if (x === 1) {
+            if (startNumber <= 0) {
+                $('#turnChange').html('You have taken the last ring!')
+                $('#countChange').html('You Win!')
+                $('button.playerDecrease').toggle();
+                $('button.restartGame').toggle();
+                $('#shownCount').html(0);
             } else {
-                console.log("The count is now " + gameCount.currentNumber + ".")
-                console.log("Gollum has made his move, it is now your turn.");
-                playerTurn = true;
+                $('#turnChange').html('You have removed ' + x + ' ring from the barrel.')
+                $('#countChange').html('There are ' + startNumber + ' rings remaining.')
+                playerTurn= false;
+                easyAI();
+          }   
+        }  else if (x >=1) {
+            if (startNumber <= 0) {
+                $('#turnChange').html('You have taken the last ring!')
+                $('#countChange').html('You Win!')
+                $('button.playerDecrease').toggle();
+                $('button.restartGame').toggle();
+                $('#shownCount').html(0);
+            } else {
+                $('#turnChange').html('You have removed ' + x + ' rings from the barrel.')
+                $('#countChange').html('There are ' + startNumber + ' rings remaining.')
+                playerTurn = false;
+                easyAI();
             }
         }
-        
+    }
+}
+// MASTER AI 
+function startGameMaster() {
+    $('button.startToggleOff').toggle();
+    $('button.playerDecreaseM').toggle();
+    startNumber = prompt('How many rings are in the barrel?');
+        startNumber = parseFloat(startNumber)
+    if (startNumber % 1 != 0) {
+        alert('Sneaky little hobbitses!')
+        $('button.startToggle').toggle();
+        $('button.playerDecreaseM').toggle();
+    } else {
+        $('#shownCount').html(startNumber)
+        playerTurn = false;
+        masterAI();
+        return startNumber;
+    }
+}
 
-//DON"T TOUCH THESE
+// DECIDES MASTER AI MOVE 
+
+function masterAI() {
+    if (playerTurn === false) {
+        setTimeout(function () {
+            console.log(startNumber)
+            if (startNumber  % 4 === 1) {
+                startNumber = startNumber  - 1
+                $('#shownCount').html(startNumber);
+                if (startNumber  === 0) {
+                    $('#turnChange').html('Gollum has taken the last ring!')
+                    $('#countChange').html('You lose!')
+                    $('button.playerDecreaseM').toggle();
+                    $('button.restartGame').toggle();
+                } else {
+                    $('#turnChange').html('Gollum has made his move, he has taken 1 ring.')
+                    $('#countChange').html('There are ' + startNumber + ' remaining.')
+                    playerTurn = true;
+                }
+            } else if (startNumber  % 4 === 2) {
+                startNumber = startNumber  - 2
+                $('#shownCount').html(startNumber);
+                if (startNumber  === 0) {
+                    $('#turnChange').html('Gollum has taken the last ring!')
+                    $('#countChange').html('You lose!')
+                    $('button.playerDecreaseM').toggle();
+                    $('button.restartGame').toggle();
+                } else {
+                    $('#turnChange').html('Gollum has made his move, he has taken 2 rings.')
+                    $('#countChange').html('There are ' + startNumber + ' remaining.')
+                    playerTurn = true;
+                }
+            } else if (startNumber % 4 === 3) {
+                startNumber = startNumber - 3 
+                $('#shownCount').html(startNumber)
+                if (startNumber === 0) {
+                    $('#turnChange').html('Gollum has taken the last ring!')
+                    $('#countChange').html('You lose!')
+                    $('button.playerDecreaseM').toggle();
+                    $('button.restartGame').toggle();
+                } else {
+                    $('#turnChange').html('Gollum has made his move, he has taken 3 rings.')
+                    $('#countChange').html('There are ' + startNumber + ' remaining.')
+                    playerTurn = true;
+                }
+            } else if (startNumber % 4 === 0) {
+                startNumber = startNumber - 4
+                $('#shownCount').html(startNumber)
+                if (startNumber === 0) {
+                    $('#turnChange').html('Gollum has taken the last ring!')
+                    $('#countChange').html('You lose!')
+                    $('button.playerDecreaseM').toggle();
+                    $('button.restartGame').toggle();
+                } else {
+                    $('#turnChange').html('Gollum has made his move.')
+                    $('#countChange').html('There are ' + startNumber + ' remaining.')
+                    playerTurn = true;
+                }
+            }
+        }, 1500);
+    }
+}
+function playerDecreaseM(x) {
+    if (playerTurn === true && startNumber >= 1) {
+        startNumber = startNumber - x
+        $('#shownCount').html(startNumber);
+        if (x === 1) {
+            if (startNumber <= 0) {
+                $('#turnChange').html('You have taken the last ring!')
+                $('#countChange').html('You Win!')
+                $('button.playerDecreaseM').toggle();
+                $('button.restartGame').toggle();
+                $('#shownCount').html(0);
+            } else {
+                $('#turnChange').html('You have removed ' + x + ' ring from the barrel.')
+                $('#countChange').html('There are ' + startNumber + ' rings remaining.')
+                playerTurn = false;
+                masterAI();
+            }
+        } else if (x >= 1) {
+            if (startNumber <= 0) {
+                $('#turnChange').html('You have taken the last ring!')
+                $('#countChange').html('You Win!')
+                $('button.playerDecreaseM').toggle();
+                $('button.restartGame').toggle();
+                $('#shownCount').html(0);
+            } else {
+                $('#turnChange').html('You have removed ' + x + ' rings from the barrel.')
+                $('#countChange').html('There are ' + startNumber + ' rings remaining.')
+                playerTurn = false;
+                masterAI();
+            }
+        }
     }
 }
