@@ -6,12 +6,12 @@
     text-align:center;
     margin: 0 auto;
     padding: 10px 0;
-    color:rgba(173, 133, 77, 1)
+    color:#ad854d
 }
 
 .introWrapper h3 {
     font-size:3.0rem;
-    color:white;
+    color:#ffffff;
     font-family:'Alegreya SC', serif;
     margin: 50px 0;
 }
@@ -21,7 +21,7 @@
     line-height:25px;
 }
 .introWrapper p:hover {
-    color:rgb(167, 75, 0);
+    color:#a74b00;
 }
 .introColumn {
     display:grid;
@@ -30,15 +30,19 @@
     grid-gap: 100px;
 }
 .introColumn span {
-    font-size:2.2rem;
-    font-weight:700;
+    color:#ffffff;
+     font-weight:700; 
 }
 
+
+.introWrapper button {
+    margin-top:50px;
+}
 
 /* MAIN SECTION  */
 .mainWrapper p {
     font-size:7.0rem;
-    color:rgba(173, 133, 77, 1)
+    color:#ad854d
 }
 
 .mainWrapper {
@@ -54,7 +58,7 @@
     margin: auto 0;
 }
 .countWrapper h2:hover {
-    color:white;
+    color:#ffffff;
 }
 .countWrapper p {
     font-family:'Alegreya SC', serif;
@@ -69,7 +73,7 @@
 .logWrapper {
     margin:0 auto;
     text-align:center;
-    color:white;
+    color:#ffffff;
     font-family:'Alegreya SC', serif;
     font-size:2.0rem;
 }
@@ -93,13 +97,84 @@
     display:none;
 }
 
-.buttonWrapper button {
+.buttonWrapper button, 
+.introWrapper button {
     background-color:#121212;
-    border: 2px solid white;
-    color: rgba(225, 175, 100, 1);
+    border: 2px solid #ffffff;
+    color: #e1af64;
     font-family:'Alegreya SC', serif;
-    border-radius:5%;
 }
-.buttonWrapper button:hover {
-    color:rgb(167, 75, 0);
+
+.startToggle {
+    clip-path: 
+        polygon(
+        0% 20px,                 
+        20px 0%,                 
+        100% 0,
+        100% 100%,
+        0% 100%
+        );
 }
+
+.startToggle:before {
+    content:'';
+    display:block;
+    border:2px solid #ffffff;
+    width:15%;
+    transform: rotate(-45deg);
+    margin-left:-20px
+}
+
+.buttonWrapper button:hover,
+.introWrapper button:hover{
+    color:#a74b00;
+    animation: buttonFlicker 1s;
+}
+@keyframes buttonFlicker {
+  0% {
+    color:#ff0000;
+  }
+  50% {
+    color:#ffc0cb;
+  }
+  100% {
+      color:#ff0000;
+  }
+}
+
+
+/* Tablet RESPONSIVE */
+
+@media only screen and (max-width: 1000px) {
+    .introWrapper {
+        width:80%;
+    }
+    .mainWrapper {
+        width:80%;
+        grid-template-columns: 1fr;
+    }
+    .gollumWrapper {
+        margin:0 auto;
+        padding-bottom:75px;
+        padding-left:50px;
+    }
+    .mainWrapper p {
+        font-size:4.0rem;
+        margin: 0 10px;
+    }
+    .mainWrapper h2 {
+        font-size:4.0rem;
+    }
+    .buttonWrapper button, 
+    .introWrapper button {
+        font-size:4.0rem;
+    }
+
+    .introColumn {
+        grid-template-columns: 1fr;
+    }
+    .introColumn p {
+        line-height:20px;
+    }
+}
+

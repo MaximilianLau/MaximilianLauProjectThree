@@ -11,15 +11,10 @@
 </head>
 <body>
 
-    
-<!-- animation: bounce 2s infinite; -->
-
 <!-- HEADER BEGINS -->
     <header>
-        <div class='wrapper'>
-            <div class='topWrapper'>
-                <h1 style="visibility:hidden">Gollum Souls</h1>
-            </div>
+        <div class='topWrapper'>
+            <h1 style="visibility:hidden">Gollum Souls</h1>
         </div>
     </header>
 <!-- HEADER ENDS     -->
@@ -28,7 +23,7 @@
     <main>
         <!-- INTRO TO GAME SECTION BEGINS -->
         <section>
-            <div class="wrapper">
+            <div class="wrapper2">
                 <div class="parallaxWrapper">
                     <div class="parallaxLayer bg1"></div>
                     <div class="parallaxLayer bg2"></div>
@@ -59,25 +54,27 @@
                     Wait? Is that Gollum?!?
                     </p>
                     <p>
-                    <span>"I've been waiting... This game can't start with only one person."</span> <br><br>
-                    Gollum explains that to escape this place, you must be able to get the "One Ring" from the barrel. <br><br>
+                    "I've been waiting... This game can't start with only one person."<br><br>
+                    <span>Gollum explains that to escape this place, you must be able to get the "One Ring" from the barrel. <br><br>
                     The barrel is enchanted so that you may only take one, two, or three rings from the barrel and that the "One Ring" will be the last one taken. <br><br>
                     There can only be one winner.. Let the game begin!
+                    </span>
                     </p>
                 </div>
+                <a href="#gollumWrapper"><button>Play</button></a>
             </div>
         </section>
         <!-- THE COUNT SECTION BEGINS -->
         <section class="wrapper">
             <div class="mainWrapper">
-                <div class="gollumWrapper">
-                    <div class='pixelart-to-css2'>
+                <div class="gollumWrapper" id="gollumWrapper">
+                    <div class="pixelBubble">
                     </div>
-                    <div class='pixelart-to-css3'>
+                    <div class="pixelGlass">
                     </div>
-                    <div class='pixelart-to-css4'>
+                    <div class="pixelSmoke">
                     </div>
-                    <div class="pixelart-to-css">                        
+                    <div class="pixelGollum">                        
                     </div>
                 </div>
                 <div class="countWrapper">
@@ -91,15 +88,15 @@
     <!-- THE COUNT SECTION ENDS -->
         <section class="wrapper">
             <div class="logWrapper">
-                <p id='turnChange'>-----</p>
-                <p id='countChange'>-----</p>
+                <p id='turnChange'>start the game</p>
+                <p id='countChange'>choose how many rings are inside</p>
             </div>
         </section>        
         <section>
             <div class="wrapper buttonWrapper">
                 <button class="startToggle" onclick="startGameToggle();">Start Game</button>
                 <button class="startToggleOff" onclick="startGameEasy();">Easy Mode</button>
-                <button class="startToggleOff" onclick="startGameMaster();">Master Mode</button>
+                <button class="startToggleOff" onclick="startGameMaster();">Souls Mode</button>
                 <button class="restartGame" onclick="restartGame();">Play Again?</button>
                 <button class="playerDecrease" onclick="playerDecrease(1);">ONE</button>
                 <button class="playerDecrease" onclick="playerDecrease(2);">TWO</button>

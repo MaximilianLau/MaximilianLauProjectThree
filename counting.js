@@ -11,28 +11,26 @@ $.fn.visible = function () {
         $(this).css("visibility", "visible");
     });
 };
-
 // Adding parallax Mouse scroll 
 $(window).scroll(function () {
-    const parallaxScroll = $(this).scrollTop();
-
+    const scrollParallax= $(this).scrollTop();
     $('.bg1').css({
-        'transform': 'translate(0,' + parallaxScroll / 5 + '%)'
+        'transform': 'translate(0,' + scrollParallax / 5 + '%)'
     })
     $('.bg2').css({
-        'transform': 'translate(0,' + parallaxScroll / 10 + '%)'
+        'transform': 'translate(0,' + scrollParallax / 10 + '%)'
     })
     $('.bg3').css({
-        'transform': 'translate(0,' + parallaxScroll / 15 + '%)'
+        'transform': 'translate(0,' + scrollParallax / 15 + '%)'
     })
     $('.bg4').css({
-        'transform': 'translate(0,' + parallaxScroll / 20 + '%)'
+        'transform': 'translate(0,' + scrollParallax / 20 + '%)'
     })
     $('.bg5').css({
-        'transform': 'translate(0,' + parallaxScroll / 200 + '%)'
+        'transform': 'translate(0,' + scrollParallax / 200 + '%)'
     })
     $('.logo').css({
-        'transform': 'translate(0,' + parallaxScroll / 20 + '%)'
+        'transform': 'translate(0,' + scrollParallax / 20 + '%)'
     })
 })
 
@@ -45,9 +43,11 @@ function startGameToggle() {
 function restartGame() {
     $('button.startToggle').toggle();
     $('button.restartGame').toggle();
-    $('.pixelart-to-css3').hide();
-    $('.pixelart-to-css4').hide();
-    $('.pixelart-to-css2').visible();
+    $('.pixelGlass').hide();
+    $('.pixelSmoke').hide();
+    $('.pixelBubble').visible();
+    $('#turnChange').html('Let the game')
+    $('#countChange').html('Begin once more.')
 }
 
 
@@ -80,9 +80,9 @@ function easyAI() {
                 if (startNumber <= 0) {
                     $('#turnChange').html('Gollum has taken the last ring!')
                     $('#countChange').html('You lose!')
-                    $('.pixelart-to-css3').show();
-                    $('.pixelart-to-css4').show();
-                    $('.pixelart-to-css2').invisible();
+                    $('.pixelGlass').show();
+                    $('.pixelSmoke').show();
+                    $('.pixelBubble').invisible();
                     $('button.playerDecrease').toggle();
                     $('button.restartGame').toggle();
                     $('#shownCount').html(0);
@@ -95,9 +95,9 @@ function easyAI() {
                 if (startNumber <= 0) {
                     $('#turnChange').html('Gollum has taken the last ring!')
                     $('#countChange').html('You lose!')
-                    $('.pixelart-to-css3').show();
-                    $('.pixelart-to-css4').show();
-                    $('.pixelart-to-css2').invisible();
+                    $('.pixelGlass').show();
+                    $('.pixelSmoke').show();
+                    $('.pixelBubble').invisible();
                     $('button.playerDecrease').toggle();
                     $('button.restartGame').toggle();
                     $('#shownCount').html(0);
@@ -166,13 +166,15 @@ function startGameMaster() {
 function masterAI() {
     if (playerTurn === false) {
         setTimeout(function () {
-            console.log(startNumber)
             if (startNumber  % 4 === 1) {
                 startNumber = startNumber  - 1
                 $('#shownCount').html(startNumber);
                 if (startNumber  === 0) {
                     $('#turnChange').html('Gollum has taken the last ring!')
                     $('#countChange').html('You lose!')
+                    $('.pixelGlass').show();
+                    $('.pixelSmoke').show();
+                    $('.pixelBubble').invisible();
                     $('button.playerDecreaseM').toggle();
                     $('button.restartGame').toggle();
                 } else {
@@ -186,6 +188,9 @@ function masterAI() {
                 if (startNumber  === 0) {
                     $('#turnChange').html('Gollum has taken the last ring!')
                     $('#countChange').html('You lose!')
+                    $('.pixelGlass').show();
+                    $('.pixelSmoke').show();
+                    $('.pixelBubble').invisible();
                     $('button.playerDecreaseM').toggle();
                     $('button.restartGame').toggle();
                 } else {
@@ -199,6 +204,9 @@ function masterAI() {
                 if (startNumber === 0) {
                     $('#turnChange').html('Gollum has taken the last ring!')
                     $('#countChange').html('You lose!')
+                    $('.pixelGlass').show();
+                    $('.pixelSmoke').show();
+                    $('.pixelBubble').invisible();
                     $('button.playerDecreaseM').toggle();
                     $('button.restartGame').toggle();
                 } else {
@@ -212,6 +220,9 @@ function masterAI() {
                 if (startNumber === 0) {
                     $('#turnChange').html('Gollum has taken the last ring!')
                     $('#countChange').html('You lose!')
+                    $('.pixelGlass').show();
+                    $('.pixelSmoke').show();
+                    $('.pixelBubble').invisible();
                     $('button.playerDecreaseM').toggle();
                     $('button.restartGame').toggle();
                 } else {
